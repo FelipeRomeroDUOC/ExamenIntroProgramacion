@@ -126,21 +126,22 @@ def main():
         elif opcion == '3':
             while True:
                 modelo = input("\nIngrese modelo a actualizar: ")
-                if modelo not in stock:
-                    print("¡El modelo no existe!")
-                else:
-                    while True:
-                        try:
-                            precioactualizado = int(input("\nIngrese precio nuevo: "))
-                            if precioactualizado < 0:
-                                print("¡Debe ingresar valores positivos!")
-                            else:
-                                actualizar_precio(modelo, precioactualizado)
+                while True:
+                    try:
+                        precioactualizado = int(input("\nIngrese precio nuevo: "))
+                        if precioactualizado < 0:
+                            print("¡Debe ingresar valores positivos!")
+                        else:
+                            if actualizar_precio(modelo, precioactualizado):
                                 print("¡Precio actualizado!")
-                                break
-                        except ValueError:
-                            print("¡Debe ingresar valores enteros!")
-                        time.sleep(1)
+                                time.sleep(1)
+                            else:
+                                print("¡El modelo no existe!")
+                                time.sleep(1)
+                            break
+                    except ValueError:
+                        print("¡Debe ingresar valores enteros!")
+                    time.sleep(1)
                 
                 loopcheck = True
                 while loopcheck:
@@ -161,3 +162,5 @@ def main():
             return
         
 main()
+
+### LINK AL REPOSITORIO: https://github.com/FelipeRomeroDUOC/ExamenIntroProgramacion ###
